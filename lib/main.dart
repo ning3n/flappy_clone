@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flame/game.dart';
+import 'screens/flappy_game.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(
+    GestureDetector(
+      onTap: () {
+        game.jump();
+      },
+      child: GameWidget(game: game),
+    )
+  );
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-    );
-  }
-}
+final game = FlappyGame();
