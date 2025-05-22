@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:flappy_clone/Widgets/bird.dart';
 import 'package:flutter/material.dart';
 
 class FlappyGame extends StatefulWidget {
@@ -18,6 +19,8 @@ class _FlappyGameState extends State<FlappyGame> {
   double gravity = -4.9;
   double velocity = 3.5;
   bool gameHasStarted = false;
+  double obstacleX = 1.5;
+  double obstacleHeight = 200;
 
   //Timer
   Timer? gameTimer;
@@ -39,6 +42,16 @@ class _FlappyGameState extends State<FlappyGame> {
           _resetGame();
         }
       });
+      obstacleX -= 0.02;
+      
+      if(obstacleX < -1.5){
+        obstacleX = 1.5;
+        obstacleHeight = 150 + Random().nextInt(100).toDouble();
+      }
+
+      if ((obstacleX < 0.2 && obstacleX > -0.2) && (birdY < -0.7 || birdY > 0.7)){
+        _resetGame();
+      }
     }
 
     void jump(){
