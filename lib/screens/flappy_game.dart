@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flappy_clone/Widgets/bird.dart';
 import 'package:flutter/material.dart';
+import 'package:flappy_clone/Widgets/obstacle.dart';
 
 class FlappyGame extends StatefulWidget {
   const FlappyGame({super.key});
@@ -89,6 +90,16 @@ class _FlappyGameState extends State<FlappyGame> {
               Container(
                 alignment: Alignment(0, birdY),
                 child: const Bird(),
+              ),
+              Obstacle(
+                obstacleX: obstacleX, 
+                height: obstacleHeight, 
+                isTop: true,
+              ),
+              Obstacle(
+                obstacleX: obstacleX, 
+                height: 300, 
+                isTop: false,
               ),
               if (!gameHasStarted)
                 const Center(
