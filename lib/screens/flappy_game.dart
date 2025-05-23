@@ -37,22 +37,23 @@ class _FlappyGameState extends State<FlappyGame> {
 
         setState(() {
           birdY = initialPos - height;
-        });
+          
+          if (birdY > 1.1 || birdY < -1.1) {
+            _resetGame();
+          }
 
-        if (birdY > 1.1 || birdY < -1.1) {
-          _resetGame();
-        }
-      });
-      obstacleX -= 0.02;
+          obstacleX -= 0.02;
       
-      if(obstacleX < -1.5){
-        obstacleX = 1.5;
-        obstacleHeight = 150 + Random().nextInt(100).toDouble();
-      }
+          if(obstacleX < -1.5){
+            obstacleX = 1.5;
+            obstacleHeight = 150 + Random().nextInt(100).toDouble();
+          }
 
-      if ((obstacleX < 0.2 && obstacleX > -0.2) && (birdY < -0.7 || birdY > 0.7)){
-        _resetGame();
-      }
+          if ((obstacleX < 0.2 && obstacleX > -0.2) && (birdY < -0.7 || birdY > 0.7)){
+            _resetGame();
+          }
+        });
+      });
     }
 
     void jump(){

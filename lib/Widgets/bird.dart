@@ -9,7 +9,7 @@ class Bird extends StatelessWidget {
       width: 50,
       height: 50,
       decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage('lib/assets/imagen.png'), fit: BoxFit.cover)
+        image: DecorationImage(image: AssetImage('lib/assets/birdie.png'), fit: BoxFit.cover)
       ),
     );
   }
